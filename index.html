@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lógica de Programación</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+
+<center><h1>Lógica de programación 1-2-3</h1></center>
+<h3>Canvas Creeper (600px X 400px)</h3>
+        <canvas id="lienzo0" width="600" height="400"></canvas>
+        
+        <script>
+        
+            // Conecta el elemento HTML a JS
+            let pantalla = document.getElementById("lienzo0");
+            // Obtiene el contenido en 2d del canvas
+            let pincel = pantalla.getContext("2d");
+            
+            pincel.fillStyle = "green"; // Propiedad de color
+            pincel.fillRect(0,0,600,400); // Función fillRect: Rectángulo relleno
+
+            // Array con la paleta de colores que colores al Creeper, obtenida de https://parzibyte.me/blog/2021/11/30/elemento-aleatorio-arreglo-javascript/#:~:text=Lo%20%C3%BAnico%20que%20tenemos%20que,%2C%200.123123128389213892189321%20%2C%200.999123%20%2C%20etc%C3%A9tera.
+            let paletaColoresCreeper = ["#7bd329","#5ac332","#0db001","#7ae000"];
+            
+            // Función que dibuja el cuadrado con el color aleatorio
+            const dibujarPatron = (x,y) => {
+                // Propiedad con un color aleatorio de la paleta
+                pincel.fillStyle = paletaColoresCreeper[Math.floor(Math.random() * paletaColoresCreeper.length)];
+                pincel.fillRect(x,y,50,50);
+            }
+            // Ciclos que rellenan el canvas
+            for(let fila = 0; fila < 600; fila += 50){
+                for(let columna = 0; columna < 400; columna += 50){
+                    dibujarPatron(fila,columna);
+                }
+            }
+
+            // Cara con rectángulos negros
+            pincel.fillStyle = "black";
+            pincel.fillRect(150,100,100,100);
+            pincel.fillStyle = "black";
+            pincel.fillRect(350,100,100,100);
+            pincel.fillStyle = "black";
+            pincel.fillRect(250,200,100,150);
+            pincel.fillStyle = "black";
+            pincel.fillRect(200,250,50,150);
+            pincel.fillStyle = "black";
+            pincel.fillRect(350,250,50,150);
+
+        </script>
+
+
+</body>
+</html>
